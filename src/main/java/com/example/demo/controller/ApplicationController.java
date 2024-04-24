@@ -28,7 +28,7 @@ public class ApplicationController {
     @PostMapping("/create-application")
     public ResponseEntity<?> createApp(@RequestBody ApplicationDTO application, Principal principal){
         applicationService.create(application,principal);
-        log.info("app = {}",application);
+        log.info("appDTO = {}",application);
         return ResponseEntity.ok().body(application);
     }
     @GetMapping("/users")

@@ -28,6 +28,7 @@ public class ApplicationService extends AbstractService<Application, Application
             data.setCount(application.getCount());
             data.setAddress(application.getAddress());
             data.setPhoneNumber(application.getPhoneNumber());
+            log.info("appEntity = {}",data);
             return storage.save(data);
     }
 
