@@ -19,21 +19,14 @@ import java.util.List;
 public class ApplicationController {
     private final UserService userService;
     private final ApplicationService applicationService;
-
     @GetMapping("/")
-    public List<Application> findAll(){
-        return applicationService.findAll();
+    public List<Users> home(){
+        return userService.findAll();
     }
-
     @PostMapping("/create-application")
     public ResponseEntity<?> createApp(@RequestBody ApplicationDTO application, Principal principal){
         applicationService.create(application,principal);
         log.info("appDTO = {}",application);
         return ResponseEntity.ok().body(application);
     }
-    @GetMapping("/users")
-    public List<Users> home(){
-        return userService.findAll();
-    }
-
 }

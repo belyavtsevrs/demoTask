@@ -14,9 +14,6 @@ import java.util.Set;
 @Setter
 @Entity
 public class Users extends AbstractModel{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     private String email;
     private String login;
     private String password;

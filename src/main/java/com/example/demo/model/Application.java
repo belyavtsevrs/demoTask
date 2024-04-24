@@ -7,12 +7,8 @@ import lombok.ToString;
 
 @Setter
 @Getter
-@ToString
 @Entity
 public class Application extends AbstractModel{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     private String title;
     private Long count;
     private String address;
