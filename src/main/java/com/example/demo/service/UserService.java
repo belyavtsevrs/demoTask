@@ -32,14 +32,14 @@ public class UserService extends AbstractService<Users, UserRepository> {
                 throw new AlreadyExistsException("User already exist");
             }
             Users data = new Users();
-            data.setEmail(registrationDTO.getEmail());
-            data.setLogin(registrationDTO.getLogin());
-            data.setName(registrationDTO.getName());
-            data.setLastName(registrationDTO.getLastName());
+            data.setEmail(registrationDTO.getEmail().toLowerCase().trim());
+            data.setLogin(registrationDTO.getLogin().toLowerCase().trim());
+            data.setName(registrationDTO.getName().toLowerCase().trim());
+            data.setLastName(registrationDTO.getLastName().toLowerCase().trim());
             if (!registrationDTO.getPassword().equals(registrationDTO.getConfirmPassword())) {
                 throw new InvalidDataException("Password not equals");
             }
-            data.setPassword(bCryptPasswordEncoder.encode(registrationDTO.getPassword()));
+            data.setPassword(bCryptPasswordEncoder.encode(registrationDTO.getPassword().toLowerCase().trim()));
             data.getRoles().add(Roles.USER);
             return storage.save(data);
     }
