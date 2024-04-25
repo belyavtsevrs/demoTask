@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class ApplicationDTO {
+public class CreateApplicationDTO {
     @NotNull
     private String title;
     private Long count;

@@ -22,4 +22,5 @@ public abstract class AbstractService <E extends AbstractModel , T extends JpaRe
     public E findById(Long id) {
         return storage.findById(id).orElse(null);
     }
+
 }

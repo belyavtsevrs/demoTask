@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import com.example.demo.model.enums.Roles;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class Users extends AbstractModel{
     private String name;
     private String lastName;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    @JsonManagedReference
     private List<Application> application = new ArrayList<>();
     @ElementCollection(
             targetClass = Roles.class,
@@ -33,8 +35,6 @@ public class Users extends AbstractModel{
     private Set<Roles> roles = new HashSet<>();
     @OneToOne(
             cascade = CascadeType.REFRESH,
-            fetch = FetchType.EAGER
-    )
-    @JoinColumn
+            fetch = FetchType.LAZY)
     private Image avatar;
 }

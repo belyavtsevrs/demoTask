@@ -17,7 +17,6 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable())
-                /*.cors().disable()*/
                 .authorizeHttpRequests(request-> {
                     request.requestMatchers("/registration/**").permitAll();
                     request.anyRequest().authenticated();

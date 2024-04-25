@@ -1,10 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.ApplicationDTO;
-import com.example.demo.model.Application;
-import com.example.demo.model.Users;
+import com.example.demo.DTO.CreateApplicationDTO;
 import com.example.demo.service.ApplicationService;
-import com.example.demo.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +15,13 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 public class ApplicationController {
-    private final UserService userService;
     private final ApplicationService applicationService;
     @GetMapping("/")
-    public List<Users> home(){
-        return userService.findAll();
+    public List<ApplicationDTO> home(){
+        return applicationService.allDTO();
     }
     @PostMapping("/create-application")
-    public ResponseEntity<?> createApp(@RequestBody ApplicationDTO application, Principal principal){
+    public ResponseEntity<?> createApp(@RequestBody CreateApplicationDTO application, Principal principal){
         applicationService.create(application,principal);
         log.info("appDTO = {}",application);
         return ResponseEntity.ok().body(application);

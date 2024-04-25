@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.DTO.RegistrationDTO;
+import com.example.demo.DTO.CreateUserDTO;
 import com.example.demo.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -16,9 +16,9 @@ public class SecurityController {
     private final UserService userService;
 
     @PostMapping("/registration")
-    public ResponseEntity<?> createNewUser(@Valid @RequestBody RegistrationDTO registrationDTO) {
-        userService.create(registrationDTO);
-        return ResponseEntity.ok().body(registrationDTO.toString());
+    public ResponseEntity<?> createNewUser(@Valid @RequestBody CreateUserDTO createUserDTO) {
+        userService.create(createUserDTO);
+        return ResponseEntity.ok().body(createUserDTO.toString());
     }
 
     @PostMapping("/add-avatar")
